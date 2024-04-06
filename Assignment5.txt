@@ -1,0 +1,102 @@
+
+
+1. Create Required Branches
+
+# Initialize a new Git repository
+git init
+
+# Create the main branches
+git checkout -b develop
+git checkout -b main
+
+
+# Create feature, release, and hotfix branch prefixes
+git checkout -b feature/branch-name
+git checkout -b release/version-number
+git checkout -b hotfix/issue-number
+
+
+2. Set Up Git Flow
+
+# Initialize Git Flow in the repository
+git flow init
+
+3. Work on a Feature Branch
+Create and switch to a new feature branch to work on a specific feature:
+
+
+git checkout -b feature/new-feature develop
+# Work on your feature, make commits
+git add .
+git commit -m "Implement new feature"
+
+4. Merge Feature to Develop
+Once the feature is completed, merge it back into the develop branch:
+
+
+git checkout develop
+git merge --no-ff feature/new-feature
+git branch -d feature/new-feature
+
+5. Prepare Release
+When it's time to make a release, create a release branch from develop:
+
+
+git checkout -b release/1.0 develop
+# Perform any necessary release preparations (e.g., version bump, testing)
+# Commit changes
+git add .
+git commit -m "Prepare for release 1.0"
+
+6. Finish Release
+Merge the release branch into both main and develop:
+
+
+git checkout main
+git merge --no-ff release/1.0
+git tag 1.0
+
+git checkout develop
+git merge --no-ff release/1.0
+
+git branch -d release/1.0
+
+7. Create Hotfix
+If an urgent issue arises on the main branch, create a hotfix branch:
+
+
+git checkout -b hotfix/urgent-fix main
+# Make necessary changes
+# Commit changes
+git add .
+git commit -m "Fix urgent issue"
+
+8. Finish Hotfix
+Merge the hotfix into both main and develop:
+
+
+git checkout main
+git merge --no-ff hotfix/urgent-fix
+git tag 1.0.1
+
+git checkout develop
+git merge --no-ff hotfix/urgent-fix
+
+git branch -d hotfix/urgent-fix
+
+#Pushing Changes
+git push origin branch-name
+
+git push origin main
+
+
+# Adding urgent.txt using Hotfix
+
+
+git checkout hotfix/urgent-fix
+echo "This is urgent!" > urgent.txt
+git add urgent.txt
+git commit -m "Add urgent.txt"
+git checkout main
+git merge --no-ff hotfix/urgent-fix
+git push origin main
