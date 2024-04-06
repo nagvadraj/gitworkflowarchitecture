@@ -1,25 +1,13 @@
 
 
-1. Create Required Branches
-
-# Initialize a new Git repository
-git init
-
-# Create the main branches
-git checkout -b develop
-git checkout -b main
 
 
-# Create feature, release, and hotfix branch prefixes
-git checkout -b feature/branch-name
-git checkout -b release/version-number
-git checkout -b hotfix/issue-number
-
-
-2. Set Up Git Flow
+1. Initialize a new Git repository
 
 # Initialize Git Flow in the repository
 git flow init
+
+2. add all branches
 
 3. Work on a Feature Branch
 Create and switch to a new feature branch to work on a specific feature:
