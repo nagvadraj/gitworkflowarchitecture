@@ -13,7 +13,7 @@ git flow init
 Create and switch to a new feature branch to work on a specific feature:
 
 
-git checkout -b feature/f1 develop
+git checkout -b feature/f2 develop
 # Work on your feature, make commits
 git add .
 git commit -m "Implement new feature"
@@ -23,12 +23,11 @@ Once the feature is completed, merge it back into the develop branch:
 
 
 git checkout develop
-git merge --no-ff feature/f1
-git branch -d feature/f1
+git merge feature/f2
+git push origin develop
+git branch -d feature/f2
 
 5. Prepare Release
-When it's time to make a release, create a release branch from develop:
-
 
 git checkout -b release/1.0 develop
 # Perform any necessary release preparations (e.g., version bump, testing)
