@@ -1,13 +1,8 @@
 
-
-
-
-1. Initialize a new Git repository
-
-# Initialize Git Flow in the repository
+## Initialize Git Flow in the repository
 git flow init
 
-2. add prompts
+## add prompts
 
 3. Work on a Feature Branch
 Create and switch to a new feature branch to work on a specific feature:
@@ -18,7 +13,7 @@ git checkout -b feature/f2 develop
 git add .
 git commit -m "Implement new feature"
 
-4. Merge Feature to Develop
+## Merge Feature to Develop
 Once the feature is completed, merge it back into the develop branch:
 
 
@@ -27,14 +22,14 @@ git merge feature/f2
 git push origin develop
 git branch -d feature/f2
 
-5. Prepare Release
+## Prepare Release
 
 git checkout -b release/1.0 develop
 # Commit changes
 git add .
 git commit -m "Prepare for release 1.0"
 
-6. Finish Release
+## Finish Release
 Merge the release branch into both main and develop:
 
 
@@ -50,42 +45,14 @@ git push origin develop
 
 git branch -d release/1.0
 
-7. Create Hotfix
-If an urgent issue arises on the main branch, create a hotfix branch:
-
-
-git checkout -b hotfix/urgent-fix main
-# Make necessary changes
-# Commit changes
-git add .
-git commit -m "Fix urgent issue"
-
-8. Finish Hotfix
-Merge the hotfix into both main and develop:
-
-
-git checkout main
-git merge --no-ff hotfix/urgent-fix
-git tag 1.0.1
-
-git checkout develop
-git merge --no-ff hotfix/urgent-fix
-
-git branch -d hotfix/urgent-fix
-
-#Pushing Changes
-git push origin branch-name
-
-git push origin main
-
 
 # Adding urgent.txt using Hotfix
 
 
-git checkout hotfix/urgent-fix
+git checkout -b hotfix/urgent-fix
 echo "This is urgent!" > urgent.txt
 git add urgent.txt
 git commit -m "Add urgent.txt"
 git checkout main
-git merge --no-ff hotfix/urgent-fix
+git merge hotfix/urgent-fix
 git push origin main
